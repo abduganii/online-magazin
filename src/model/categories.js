@@ -4,7 +4,6 @@ const CategorieSchema = mongoose.Schema({
     name: {
         type: String,
         required: true,
-        unique: true,
         trim:true
     },
     createdAt: {
