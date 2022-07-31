@@ -1,9 +1,9 @@
 const categorieModel = require('../../model/categories')
-
 module.exports = {
     GET: async (_, res) => {
         try {
-            res.send(await categorieModel.find())
+            res.send(await categorieModel.find().populate('products'))
+            
         } catch (error) {
             console.log(error)
         }

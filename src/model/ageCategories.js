@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose")
 
-const SeasonSchema = mongoose.Schema({
+const AgeCategorieSchema = mongoose.Schema({
     type: {
         type: String,
         required: true,
@@ -13,6 +13,6 @@ const SeasonSchema = mongoose.Schema({
     products:[{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }]
 })
 
-const seasonModel = mongoose.model("Season", SeasonSchema)
+const ageCategorieModel = mongoose.model("AgeCategorie", AgeCategorieSchema)
 
-module.exports = seasonModel
+module.exports = ageCategorieModel

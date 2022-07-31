@@ -3,7 +3,8 @@ const router = express.Router()
 const categories = require('./categories/categories')
 const seasons = require('./season/season')
 const products = require('./products/products')
-
+const ageCategories = require('./ageCategoris/agecategoris')
+const comments = require('./comments/comments')
 router
     //categories
     .get('/categories',categories.GET)
@@ -15,8 +16,18 @@ router
     .post('/newSeason',seasons.POST)
     .put('/updateSeason',seasons.PUT)
     .delete('/deleteSeason', seasons.DELETE)
+    //ageCategories
+    .get('/ageCategories',ageCategories.GET)
+    .post('/newAgeCategories', ageCategories.POST)
+    .delete('/deleteAgeCategories', ageCategories.DELETE)
     //products
     .get('/products',products.GET)
-    .post('/newProduct',products.POST)
+    .post('/newProduct', products.POST)
+    .delete('/deleteProduct', products.DELETE)
+    // comments
+    .get('/comments',comments.GET) 
+    .post('/newComments',comments.POST) 
+    .delete('/deleteComments',comments.DELETE) 
+
 
 module.exports = router

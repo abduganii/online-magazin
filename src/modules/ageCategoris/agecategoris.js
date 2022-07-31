@@ -1,9 +1,9 @@
-const seasonModel = require('../../model/season')
+const ageCategorieModel = require('../../model/ageCategories')
 
 module.exports = {
     GET: async (_, res) => {
         try {
-            res.send(await seasonModel.find().populate('products'))
+            res.send(await ageCategorieModel.find().populate('products'))
         } catch (error) {
             console.log(error)
         }
@@ -11,9 +11,9 @@ module.exports = {
     POST: async (req, res) => {
         try {
             const { type } = req.body
-            const newSeasonModel = new seasonModel({type})
-            await newSeasonModel.save()
-            res.send(newSeasonModel)
+            const newAgeCategorieModel = new ageCategorieModel({type})
+            await newAgeCategorieModel.save()
+            res.send(newAgeCategorieModel)
         } catch (error) {
             console.log(error)
         }
@@ -21,7 +21,7 @@ module.exports = {
     PUT: async(req,res)=>{
         try {
             const { id,type } = req.body
-            res.send(await seasonModel.findByIdAndUpdate(id,{type}))
+            res.send(await ageCategorieModel.findByIdAndUpdate(id,{type}))
         } catch (error) {
             console.log(error.message)
         }
@@ -29,7 +29,7 @@ module.exports = {
     DELETE: async (req, res) => {
         try {
             const { id } = req.body
-            res.send(await seasonModel.findByIdAndRemove(id))
+            res.send(await ageCategorieModel.findByIdAndRemove(id))
         } catch (error) {
             console.log(error)
             

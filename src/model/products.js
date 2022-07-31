@@ -11,34 +11,43 @@ const ProductSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
-    createdAt: {
-        type: Date,
-        default:Date.now
-    },
-    quantity: {
-        type: Number,
-        required: true,
-    },
     color: [String],
     size: [Number],
     categorieId: {
         type: mongoose.Schema.Types.ObjectId,
         ref:"Categorie"
     },
-    season: {
+    seasonId: {
         type: mongoose.Schema.Types.ObjectId,
         ref:"Season"
     },
-    ageCategory:{
-        type: String,
-        required: true,
+    ageCategoryId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"AgeCategorie"
     },
     componentPart: {
-        type: String,
-        required:true
+        type:String ,
+        required: true,
     },
-    thoughts:[String]
-
+    text: {
+        type:String ,
+        required: true, 
+    },
+    comments: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comments"
+        }
+    ],
+    createdAt: {
+        type: Date,
+        default:Date.now
+    },
+    is_new:{
+        type: Boolean,
+        required: true,
+        default:true
+    }
 })
 
 const productModel = mongoose.model("Product", ProductSchema)
