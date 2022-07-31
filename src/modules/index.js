@@ -5,7 +5,16 @@ const seasons = require('./season/season')
 const products = require('./products/products')
 const ageCategories = require('./ageCategoris/agecategoris')
 const comments = require('./comments/comments')
+const admin = require('./admin/admin')
+const login = require('./login/login')
+const auth = require('../meddlewares/auth')
+
 router
+    //login
+    .post('/login', login)
+    //admin
+    .get('/admin',auth,admin.GET)
+    .post('/newAdmin',admin.POST)
     //categories
     .get('/categories',categories.GET)
     .post('/newCategorie',categories.POST)

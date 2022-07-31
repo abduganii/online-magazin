@@ -23,7 +23,7 @@ const CommentSchema = mongoose.Schema({
         type: Date,
         default:Date.now
     },
-    productsid: {
+    productId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Product"
     }

@@ -1,9 +1,10 @@
 const commentsModel = require('../../model/comments')
+const productModel = require('../../model/products')
 
 module.exports = {
     GET: async (_, res) => {
         try {
-            res.send(await commentsModel.find())
+            res.send(await commentsModel.find().populate("productId"))
             
         } catch (error) {
             console.log(error)
@@ -11,9 +12,16 @@ module.exports = {
     },
     POST: async (req, res) => {
         try {
-            const {name,surname,text,stars}= req.body
-            const newCommentsModelModel = new commentsModel({ name,surname,text,stars})
+            const { name, surname, text, stars, productId } = req.body
+            
+            const newCommentsModelModel = new commentsModel({ name, surname, text, stars, productId })
+            const product = await productModel.findOne({id:productId})
+
+            product.comments.push(newCommentsModelModel._id)
+
             await newCommentsModelModel.save()
+            await product.save()
+
             res.send(newCommentsModelModel)
         } catch (error) {
             console.log(error)

@@ -6,7 +6,7 @@ const ageCategorieModel = require('../../model/ageCategories')
 module.exports = {
     GET: async (_, res) => {
         try {
-            res.send(await productModel.find().populate("categorieId").populate("seasonId").populate("ageCategoryId"))
+            res.send(await productModel.find().populate("categorieId").populate("seasonId").populate("ageCategoryId").populate("comments"))
         } catch (error) {
             console.log(error)
         }
